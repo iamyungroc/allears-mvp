@@ -47,7 +47,7 @@
             -webkit-font-smoothing: antialiased;
             background-image:
                 linear-gradient(rgba(15, 13, 10, 0.88), rgba(15, 13, 10, 0.92)),
-                url('producer-background.jpg');
+                url('roc-background.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -55,22 +55,6 @@
 
         @media (min-width: 768px) {
             body { background-attachment: fixed; padding: 20px; }
-        }
-
-        .demo-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--warning);
-            color: var(--bg-color);
-            text-align: center;
-            padding: 8px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 999;
         }
 
         .container {
@@ -85,7 +69,6 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03) inset;
             position: relative;
             overflow: hidden;
-            margin-top: 40px;
         }
 
         .header { text-align: center; margin-bottom: 28px; }
@@ -651,19 +634,15 @@
 </head>
 <body>
 
-<div class="demo-banner">
-    ⚡ DEMO VERSION — This is a showcase of what your AllEars platform could look like
-</div>
-
 <div class="container">
     <div class="header">
         <div class="logo-wrapper">
             <h1 class="logo">AllEars</h1>
-            <span class="logo-beta">Demo</span>
+            <span class="logo-beta">Beta</span>
         </div>
         <span class="logo-flourish"></span>
         <p>The Producer-Client Alignment Platform</p>
-        <div class="trust-badge">Built for Professional Music Producers</div>
+        <div class="trust-badge">Trusted by 50+ Artists Across Nigeria</div>
     </div>
 
     <div class="stepper">
@@ -687,12 +666,12 @@
         </div>
         <div class="input-group">
             <label>Artist Name *</label>
-            <input type="text" id="artist-name" placeholder="e.g., Your stage name...">
+            <input type="text" id="artist-name" placeholder="e.g., Wizkid, Tems...">
             <div class="error-message" id="artist-name-error">Please enter artist name</div>
         </div>
         <div class="input-group">
             <label>Email Address *</label>
-            <input type="email" id="client-email" placeholder="e.g., your@email.com">
+            <input type="email" id="client-email" placeholder="e.g., john@example.com">
             <div class="error-message" id="client-email-error">Please enter a valid email</div>
         </div>
         <div class="input-group">
@@ -738,7 +717,7 @@
         </div>
         <div class="input-group">
             <label>Reference Track</label>
-            <input type="text" id="ref-track" placeholder="e.g., Artist - Song Name">
+            <input type="text" id="ref-track" placeholder="e.g., Burna Boy - Last Last">
         </div>
         <div class="input-group">
             <label>What I Love About The Reference</label>
@@ -757,7 +736,7 @@
         </div>
         <div class="input-group">
             <label>What I Don't Want (Anti-Reference)</label>
-            <textarea id="dna-anti" placeholder="e.g., Don't want it to sound like..."></textarea>
+            <textarea id="dna-anti" placeholder="e.g., Don't want it to sound like generic TikTok pop..."></textarea>
         </div>
         <div class="nav-footer">
             <button class="secondary-btn" onclick="prevStep()">Back</button>
@@ -812,12 +791,12 @@
             <h4>Service Required *</h4>
             <select id="session-objective" onchange="updateLivePrice()">
                 <option value="">Select service...</option>
-                <option value="Recording">Recording Session</option>
-                <option value="Production">Production / Beat Making</option>
-                <option value="Mixing">Mixing</option>
-                <option value="Mastering">Mastering</option>
-                <option value="Full Production">Full Production (Start to Finish)</option>
-                <option value="Meditation">Meditation Session</option>
+                <option value="Recording">Voicing Only (Recording) - ₦50,000/track</option>
+                <option value="Production">Beats Only (Production) - ₦100,000/beat</option>
+                <option value="Mixing">Mixing - ₦100,000/track</option>
+                <option value="Mastering">Mastering - ₦100,000/track</option>
+                <option value="Full Production">Full Production (Start to Finish) - ₦200,000/track</option>
+                <option value="Meditation">Meditation Session (from 10 mins) - ₦80,000</option>
                 <option value="EP Production">EP Production - Contact Producer</option>
                 <option value="Album Production">Full Album Production - Contact Producer</option>
             </select>
@@ -833,7 +812,7 @@
             <div class="error-message" id="date-error">Weekend bookings are not available. Please select a weekday.</div>
         </div>
         <div class="booking-section">
-            <h4>Available Time Slots * <span style="font-size: 10px; color: var(--text-secondary); text-transform: none;">(Local Time)</span></h4>
+            <h4>Available Time Slots * <span style="font-size: 10px; color: var(--text-secondary); text-transform: none;">(WAT - Lagos Time)</span></h4>
             <div class="time-slots">
                 <div class="time-slot" onclick="selectTimeSlot(this, '10:00 AM')">10:00 AM</div>
                 <div class="time-slot" onclick="selectTimeSlot(this, '12:00 PM')">12:00 PM</div>
@@ -860,13 +839,13 @@
         
         <div class="live-price-box">
             <div class="live-price-label">Estimated Total</div>
-            <div class="live-price-amount" id="live-price">Contact Producer</div>
-            <div class="live-price-note" id="live-price-note">Pricing set by producer</div>
+            <div class="live-price-amount" id="live-price">₦0</div>
+            <div class="live-price-note" id="live-price-note">Select a service to see pricing</div>
         </div>
 
         <div class="booking-section" style="margin-top: 16px;">
             <h4>Studio Location</h4>
-            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.5;">Producer's Studio<br>Location shared upon booking confirmation</p>
+            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.5;">RocAudio Studio<br>Lagos, Nigeria<br><i>Exact address shared upon booking confirmation</i></p>
         </div>
         <div class="booking-confirmation" id="booking-confirmation">
             <h5>Session Booked</h5>
@@ -920,7 +899,7 @@
 
         <div class="input-group">
             <label>Additional Notes (Optional)</label>
-            <textarea id="fb-input" placeholder="Any special requests, references, or notes for the producer..."></textarea>
+            <textarea id="fb-input" placeholder="Any special requests, references, or notes for Roc..."></textarea>
         </div>
 
         <div class="faq-section">
@@ -931,23 +910,27 @@
             <div class="faq-body" id="faq-body">
                 <div class="faq-item">
                     <div class="faq-question">How do I pay?</div>
-                    <p class="faq-answer">Payment details will be provided by the producer after booking confirmation.</p>
+                    <p class="faq-answer">After finalizing your booking, a 50% deposit is required to secure your slot. Payment is made via Paystack (card, bank transfer, or USSD). The remaining balance is due on or before the session date.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">What if I need to reschedule?</div>
-                    <p class="faq-answer">Rescheduling policies are set by each producer. Contact your producer directly for details.</p>
+                    <p class="faq-answer">Rescheduling is allowed once with at least 24 hours notice, at no extra cost. Cancellations within 24 hours are non-refundable.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">How many revisions are included?</div>
-                    <p class="faq-answer">Revision policies vary by producer. This will be discussed during your booking confirmation.</p>
+                    <p class="faq-answer">Each project includes up to 2 free revisions after the initial delivery. Additional revisions are charged at a per-revision rate, quoted before work begins.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">What files will I receive?</div>
-                    <p class="faq-answer">File delivery formats and contents are determined by each producer.</p>
+                    <p class="faq-answer">You will receive high-quality WAV files (mix and/or master). Stems are available upon request. Project files (DAW sessions) are not included unless separately purchased.</p>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer refunds?</div>
+                    <p class="faq-answer">Deposits are non-refundable once a session is confirmed. However, you may reschedule once with 24+ hours notice.</p>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">What happens after I submit?</div>
-                    <p class="faq-answer">The producer will receive your booking and reach out to confirm details and next steps.</p>
+                    <p class="faq-answer">You'll receive a confirmation email within 5 minutes. Roc will reach out on WhatsApp within 24 hours to confirm all details, discuss next steps, and arrange payment.</p>
                 </div>
             </div>
         </div>
@@ -955,7 +938,7 @@
         <div class="tc-agreement">
             <input type="checkbox" class="tc-checkbox" id="tc-checkbox" onchange="toggleFinalizeBtn()">
             <div class="tc-text">
-                I have read and agree to the <span class="tc-link" onclick="openModal()">Terms & Conditions</span>.
+                I have read and agree to the <span class="tc-link" onclick="openModal()">Terms & Conditions</span> of RocAudio Tech Company.
             </div>
         </div>
 
@@ -967,20 +950,20 @@
 
     <div id="success-screen" class="success-screen">
         <div class="success-icon">✓</div>
-        <h2>Booking Submitted!</h2>
+        <h2>Session Finalized!</h2>
         
         <div class="next-steps">
             <h5>What Happens Next</h5>
             <ol>
-                <li>The producer will receive your booking details</li>
-                <li>They'll reach out to confirm availability and details</li>
-                <li>Discuss pricing, payment, and finalize your slot</li>
+                <li>You'll receive a confirmation email within 5 minutes</li>
+                <li>Roc will reach out on WhatsApp within 24 hours</li>
+                <li>Discuss details, confirm payment, and finalize your slot</li>
                 <li>Show up prepared and let's make magic happen</li>
             </ol>
         </div>
 
         <div class="summary-card">
-            <h4>Booking Summary</h4>
+            <h4>Session Summary & Estimate</h4>
             <div class="summary-item">
                 <span class="summary-label">Client (Legal Name)</span>
                 <span class="summary-value" id="summary-client"></span>
@@ -1009,13 +992,33 @@
                 <span class="summary-label">Emergency Service</span>
                 <span class="summary-value" id="summary-emergency"></span>
             </div>
+            <div class="summary-item total">
+                <span class="summary-label">Estimated Total</span>
+                <span class="summary-value" id="summary-price"></span>
+            </div>
         </div>
 
-        <button class="secondary-btn" onclick="resetApp()" style="margin-top: 24px; width: 100%;">Submit Another Booking</button>
+        <button class="pay-btn" disabled>
+            💳 Pay 50% Deposit to Secure Slot
+        </button>
+        <div class="pay-note">Payment integration coming soon. Roc will send you a payment link via WhatsApp.</div>
+        
+        <a href="#" id="whatsapp-link" target="_blank" class="whatsapp-btn">
+            💬 Chat with Roc on WhatsApp
+        </a>
+
+        <div class="contact-info">
+            <h5>Producer Contact</h5>
+            <p>📧 thebbrgroupllc@outlook.com</p>
+            <p>📱 +234 803 764 3281</p>
+            <p>📸 @iamyungroc</p>
+        </div>
+
+        <button class="secondary-btn" onclick="resetApp()" style="margin-top: 24px; width: 100%;">Book Another Session</button>
     </div>
 </div>
 
-<footer class="footer">Powered by AllEars Platform</footer>
+<footer class="footer">Created By RocAudio&trade; Tech Company</footer>
 
 <div class="modal-overlay" id="tc-modal">
     <div class="modal-box">
@@ -1025,26 +1028,34 @@
         </div>
         <div class="modal-body">
             <p><b>Effective Date:</b> September 2026</p>
-            <p>By using the AllEars platform, you agree to the following terms:</p>
-            <h4>1. Platform Purpose</h4>
+            <p>By using the AllEars platform and booking a session with RocAudio Tech Company, you agree to the following terms:</p>
+            <h4>1. Booking & Payment</h4>
             <ul>
-                <li>AllEars is a booking and alignment platform for music producers and their clients.</li>
-                <li>Each producer sets their own pricing, policies, and terms.</li>
+                <li>All sessions must be booked through the AllEars platform.</li>
+                <li>A 50% deposit is required to confirm your booking. Sessions are not confirmed until payment is received.</li>
+                <li>Prices are quoted in Nigerian Naira (NGN) and are non-negotiable once confirmed.</li>
             </ul>
-            <h4>2. Booking Process</h4>
+            <h4>2. Cancellation & Rescheduling</h4>
             <ul>
-                <li>Bookings are submitted through this platform and confirmed by the producer.</li>
-                <li>Payment terms are agreed upon directly with the producer.</li>
+                <li>Cancellations made less than 24 hours before the session are non-refundable.</li>
+                <li>Rescheduling is allowed once, with at least 24 hours notice, at no extra cost.</li>
+                <li>No-shows forfeit the full session fee.</li>
             </ul>
-            <h4>3. Producer Responsibility</h4>
+            <h4>3. Revisions</h4>
             <ul>
-                <li>Producers are responsible for their own pricing, availability, and service delivery.</li>
-                <li>AllEars is a platform connector, not a service provider.</li>
+                <li>Each project includes up to <b>2 free revisions</b> after the initial mix delivery.</li>
+                <li>Additional revisions beyond the included limit will be charged at a per-revision rate.</li>
+                <li>All revision notes must be submitted through the AllEars Mix Feedback system.</li>
             </ul>
-            <h4>4. Client Responsibility</h4>
+            <h4>4. Intellectual Property</h4>
             <ul>
-                <li>Clients must provide accurate information and arrive prepared for sessions.</li>
-                <li>Cancellation and rescheduling policies are set by each producer.</li>
+                <li>The artist retains full ownership of their composition, lyrics, and master recording upon full payment.</li>
+                <li>RocAudio reserves the right to use short audio clips (under 30 seconds) for portfolio purposes, unless requested otherwise in writing.</li>
+            </ul>
+            <h4>5. Studio Conduct</h4>
+            <ul>
+                <li>Artists must arrive prepared as outlined in the Studio Protocol (Step 5).</li>
+                <li>Excessive lateness (over 30 minutes) may result in a shortened session with no partial refund.</li>
             </ul>
         </div>
         <div class="modal-footer">
@@ -1063,6 +1074,7 @@
     let lovedElements = [];
     let isEmergency = false;
 
+    // EMAILJS CONFIGURATION - REPLACE THESE WITH YOUR ACTUAL VALUES
     const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID_HERE";
     const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID_HERE";
 
@@ -1228,8 +1240,36 @@
         var priceDisplay = document.getElementById('live-price');
         var noteDisplay = document.getElementById('live-price-note');
         
-        priceDisplay.textContent = 'Contact Producer';
-        noteDisplay.textContent = 'Pricing set by producer';
+        if (!objective || quantity < 1) {
+            priceDisplay.textContent = '₦0';
+            noteDisplay.textContent = 'Select a service and quantity to see pricing';
+            return;
+        }
+        
+        if (objective === 'EP Production' || objective === 'Album Production') {
+            priceDisplay.textContent = 'Contact Producer';
+            noteDisplay.textContent = 'Custom pricing for EP/Album projects';
+            return;
+        }
+        
+        var basePrice = 0;
+        if (objective === 'Recording') basePrice = 50000;
+        else if (objective === 'Production') basePrice = 100000;
+        else if (objective === 'Full Production') basePrice = 200000;
+        else if (objective === 'Mixing' || objective === 'Mastering') basePrice = 100000;
+        else if (objective === 'Meditation') basePrice = 80000;
+        else basePrice = 50000;
+
+        var total = basePrice * quantity;
+        
+        if (isEmergency) {
+            total = total * 1.10;
+            noteDisplay.textContent = 'Includes 10% emergency service fee';
+        } else {
+            noteDisplay.textContent = 'Standard 2-week delivery';
+        }
+        
+        priceDisplay.textContent = '₦' + total.toLocaleString();
     }
 
     function confirmBooking() {
@@ -1239,7 +1279,7 @@
         var quantity = document.getElementById('session-quantity').value || 1;
         var deliveryDate = document.getElementById('delivery-date').value;
         var emergencyText = isEmergency ? ' (EMERGENCY - 1 week delivery)' : ' (Standard - 2 weeks delivery)';
-        document.getElementById('booking-details').textContent = 'Your ' + objective + ' session (Qty: ' + quantity + ') is confirmed for ' + formattedDate + ' at ' + selectedTime + '. Delivery: ' + deliveryDate + emergencyText + '. Genre: ' + (selectedGenre || 'TBD') + '.';
+        document.getElementById('booking-details').textContent = 'Your ' + objective + ' session (Qty: ' + quantity + ') is confirmed for ' + formattedDate + ' at ' + selectedTime + '. Delivery: ' + deliveryDate + emergencyText + '. Genre: ' + (selectedGenre || 'TBD') + '. Roc will prepare the studio accordingly.';
         document.getElementById('calendar-link').href = generateCalendarLink(dateObj, selectedTime, objective);
         document.getElementById('booking-confirmation').style.display = 'block';
     }
@@ -1264,7 +1304,7 @@
         }
         var artistName = document.getElementById('artist-name').value || 'Artist';
         var desc = 'AllEars Studio Session\n\nObjective: ' + objective + '\nArtist: ' + artistName + '\nGenre: ' + (selectedGenre || 'TBD');
-        return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(objective + ' Session - ' + artistName) + '&dates=' + fmt(start) + '/' + fmt(end) + '&details=' + encodeURIComponent(desc) + '&location=Producer+Studio';
+        return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(objective + ' Session - ' + artistName) + '&dates=' + fmt(start) + '/' + fmt(end) + '&details=' + encodeURIComponent(desc) + '&location=RocAudio+Studio+Lagos';
     }
 
     function addSection() {
@@ -1362,7 +1402,9 @@
         var quantity = document.getElementById('session-quantity').value;
         var deliveryDate = document.getElementById('delivery-date').value;
         var emergencyStatus = isEmergency ? 'YES (+10%)' : 'NO (Standard)';
+        var price = calculatePrice(objective, quantity);
 
+        // PREPARE EMAIL DATA
         var templateParams = {
             client_name: clientName,
             artist_name: document.getElementById('artist-name').value,
@@ -1374,6 +1416,7 @@
             time: selectedTime,
             delivery_date: deliveryDate,
             emergency: emergencyStatus,
+            price: price === 'Contact Producer' ? price : '₦' + price,
             genre: selectedGenre || 'Not specified',
             location: document.getElementById('dna-location').value || 'Not specified',
             direction: document.getElementById('creative-direction').value || 'Not specified',
@@ -1384,13 +1427,14 @@
             notes: document.getElementById('fb-input').value || 'None'
         };
 
+        // SEND EMAIL VIA EMAILJS
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
             .then(function(response) {
                 console.log('SUCCESS!', response.status, response.text);
                 showSuccessScreen(objective, quantity);
             }, function(error) {
                 console.log('FAILED...', error);
-                alert('There was an error sending your booking. Please try again.');
+                alert('There was an error sending your booking. Please try again or contact Roc directly via WhatsApp.');
                 btn.disabled = false;
                 btn.textContent = 'Finalize Session';
             });
@@ -1402,6 +1446,7 @@
         
         var formattedBookingDate = new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
         var deliveryDate = document.getElementById('delivery-date').value;
+        var price = calculatePrice(objective, quantity);
         
         document.getElementById('summary-client').textContent = document.getElementById('client-name').value;
         document.getElementById('summary-artist').textContent = document.getElementById('artist-name').value;
@@ -1410,9 +1455,36 @@
         document.getElementById('summary-booking-date').textContent = formattedBookingDate + ' @ ' + selectedTime;
         document.getElementById('summary-delivery-date').textContent = deliveryDate;
         document.getElementById('summary-emergency').textContent = isEmergency ? 'Yes (+10%)' : 'No (Standard)';
+        document.getElementById('summary-price').textContent = price === 'Contact Producer' ? price : '₦' + price;
+
+        var clientName = document.getElementById('client-name').value;
+        var artistName = document.getElementById('artist-name').value;
+        var whatsappMessage = 'Hi Roc, I\'m ' + clientName + ' (artist: ' + artistName + '). I just finalized my ' + objective + ' booking on AllEars for ' + formattedBookingDate + ' at ' + selectedTime + '. Let\'s connect!';
+        document.getElementById('whatsapp-link').href = 'https://wa.me/2348037643281?text=' + encodeURIComponent(whatsappMessage);
 
         document.getElementById('success-screen').classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function calculatePrice(objective, quantity) {
+        if (objective === 'EP Production' || objective === 'Album Production') {
+            return 'Contact Producer';
+        }
+        var basePrice = 0;
+        if (objective === 'Recording') basePrice = 50000;
+        else if (objective === 'Production') basePrice = 100000;
+        else if (objective === 'Full Production') basePrice = 200000;
+        else if (objective === 'Mixing' || objective === 'Mastering') basePrice = 100000;
+        else if (objective === 'Meditation') basePrice = 80000;
+        else basePrice = 50000;
+
+        var total = basePrice * parseInt(quantity || 1);
+        
+        if (isEmergency) {
+            total = total * 1.10;
+        }
+        
+        return total.toLocaleString();
     }
 
     function resetApp() {
